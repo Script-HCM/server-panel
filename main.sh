@@ -282,18 +282,19 @@ speed-update() {
     
     # wget ရှိမရှိ အရင်စစ်မယ်
     if ! command -v wget &> /dev/null; then
-
-     ဖိုင်ကို download ဆွဲမယ် (အဟောင်းရှိရင် အမြဲ overwrite လုပ်ဖို့ -O သုံးပါတယ်)
-        wget "https://raw.githubusercontent.com/Script-HCM/speed-up/refs/heads/main/optimize.sh"
-        chmod +x optimize.sh
-        ./optimize.sh
-    # Permission ပေးပြီး Run မယ်
-    else
         apt install wget -y
-        wget "https://raw.githubusercontent.com/Script-HCM/speed-up/refs/heads/main/optimize.sh"
-        chmod +x optimize.sh
-        ./optimize.sh
     fi
+
+    # ဖိုင်ကို download ဆွဲမယ် (အဟောင်းရှိရင် အမြဲ overwrite လုပ်ဖို့ -O သုံးပါတယ်)
+    wget -qO optimize.sh "https://raw.githubusercontent.com/Script-HCM/speed-up/refs/heads/main/optimize.sh"
+    
+    # Permission ပေးပြီး Run မယ်
+    chmod +x optimize.sh
+    ./optimize.sh
+    
+    # Run ပြီးရင် file ကို ပြန်ဖျက်ချင်ရင် (Optional)
+    # rm optimize.sh
+}
     # Run ပြီးရင် file ကို ပြန်ဖျက်ချင်ရင် (Optional)
     # rm optimize.sh
 }
