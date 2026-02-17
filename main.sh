@@ -255,9 +255,6 @@ install_zivpn() {
 
 install_3x_ui() {
     echo -e "\n${B}Installing 3x-ui Network Optimizer...${NC}"
-     if ! command -v curl &> /dev/null; then
-        apt install curl -y
-     fi
     # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
     curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh" | bash
 }
