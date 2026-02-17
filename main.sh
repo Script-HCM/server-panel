@@ -253,7 +253,7 @@ install_zivpn() {
     fi
 }
 
-install_3x_ui() {
+    3x-ui() {
     echo -e "\n${B}Installing 3x-ui Network Optimizer...${NC}"
     # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
     curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh" | bash
@@ -262,7 +262,7 @@ install_3x_ui() {
 uninstall_zivpn() {
     echo -e "\n${R}Uninstalling ZIVPN...${NC}"
     # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
-    curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/uninstall.sh" | bash
+    curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh" | bash
 }
 
   
@@ -370,7 +370,7 @@ EOF
     local mainmenu=$(cat <<EOF
 
 ${WHITE}[01] • System Update            [05] • DARK SSH MANAGER${NC} 
-${WHITE}[02] •Firewall install          [06] • ZI-VPN INSTALL${NC}   
+${WHITE}[02] • Firewall install          [06] • ZI-VPN INSTALL${NC}   
 ${WHITE}[03] • 3X-UI                    [07] • ZI-VPN UNINSTALL${NC}
 ${WHITE}[04] • speed-update ${NC}                
 EOF
@@ -410,7 +410,7 @@ handle_main_menu() {
     case $1 in
         1) system_update ;;
         2) firewall_install ;;
-        3) install_3x_ui ;;
+        3) 3x-ui ;;
         4) speed-update ;;
         5) install_darkssh ;;
         6) install_zivpn ;;
