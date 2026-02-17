@@ -412,7 +412,7 @@ EOF
 handle_main_menu() {
     case $1 in
         1) system_update ;;
-        2) Firewall_install ;;
+        2) firewall_install ;;
         3) 3x-ui ;;
         4) speed-update ;;
         5) install_darkssh ;;
