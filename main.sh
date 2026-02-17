@@ -213,10 +213,10 @@ uninstall_zivpn() {
     fi
 
     # ဖိုင်ကို download ဆွဲမယ် (အဟောင်းရှိရင် အမြဲ overwrite လုပ်ဖို့ -O သုံးပါတယ်)
-    wget -qO optimize.sh "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh"
+    wget -qO install.sh "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh"
     
-    chmod +x install
-    ./install
+    chmod +x install.sh
+    ./install.sh
 
 }
 
