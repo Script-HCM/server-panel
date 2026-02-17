@@ -69,18 +69,6 @@ login() {
 }
 
 # --- Main Menu UI ---
-main_menu() {
-    while true; do
-        header
-        echo -e "${W}  [01] ${G}▶${NC} Install 3x-ui (Optimized)"
-        echo -e "${W}  [02] ${G}▶${NC} Install Firewall Guard"
-        echo -e "${W}  [03] ${G}▶${NC} Clear System Logs/Cache"
-        echo -e "${W}  [04] ${G}▶${NC} Uninstall ZIVPN Script"
-        echo -e "${C}─────────────────────────────────────────────────────${NC}"
-        echo -e "${W}  [00] ${R}✖${NC} Exit Program"
-        echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-        echo -ne "${Y}Select an Option: ${NC}"
-        read opt
 
         case $opt in
             1 | 01)
