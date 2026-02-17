@@ -133,8 +133,6 @@ draw_simple_box() {
 ## ---------------------------
 
 
-system_update() {
-    # ကိုယ်ပိုင် Branding Banner
     system_update() {
     draw_simple_box "${GREEN}Fetching update script from GitHub...${NC}"
     
@@ -222,7 +220,6 @@ uninstall_zivpn() {
 
 }
 
-Firewall() {
     Firewall_install() {
     draw_simple_box "${CYAN}Installing Firewall Script...${NC}"
     
@@ -246,7 +243,6 @@ Firewall() {
         apt install git -y
         # else ထဲမှာလည်း အပေါ်က အဆင့်တွေအတိုင်း ပြန်ရေးပေးပါ
     fi
-}
 }
 
 install_udpmanager() {
@@ -434,7 +430,7 @@ EOF
 
 handle_main_menu() {
     case $1 in
-        1) Firewall ;;
+        1) Firewall_install ;;
         2) 3x-ui ;;
         3) install_zivpn ;;
         4) speed-update ;;
