@@ -455,9 +455,8 @@ handle_main_menu() {
         3) 3x-ui ;;
         4) speed-update ;;
         5) install_darkssh ;;
-        6) install_zivpn ;
+        6) install_zivpn ;;
         7) uninstall_zivpn ;;
-        
         *) 
             draw_simple_box "${RED}Invalid Option in Main Menu!${NC}" $RED
             return 1 
