@@ -351,11 +351,11 @@ EOF
     # Tools menu
     local toolsmenu=$(cat <<EOF
                           
-${WHITE}[08] • CLEAN CACHE         [11] • SERVER BENCHMARK${NC} 
-${WHITE}[09] • CHECK DISK SPACE    [12] • VPN PORT INFO${NC}
-${WHITE}[10] • VPS STATUS${NC}     [13] • CLEAN VPS LOGS${NC}
+${WHITE}[08] • CLEAN CACHE            [11] • SERVER BENCHMARK${NC} 
+${WHITE}[09] • CHECK DISK SPACE       [12] • VPN PORT INFO${NC}
+${WHITE}[10] • VPS STATUS             [13] • CLEAN VPS LOGS${NC}
 
-${WHITE}[00] • EXIT               [88] • REBOOT VPS${NC}
+${WHITE}[00] • EXIT                   [88] • REBOOT VPS${NC}
 EOF
 )
     draw_box "TOOLS" $PURPLE "$toolsmenu"
