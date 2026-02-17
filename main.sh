@@ -370,7 +370,7 @@ EOF
     local mainmenu=$(cat <<EOF
 
 ${WHITE}[01] • System Update            [05] • DARK SSH MANAGER${NC} 
-${WHITE}[02] • Firewall install          [06] • ZI-VPN INSTALL${NC}   
+${WHITE}[02] • Firewall install         [06] • ZI-VPN INSTALL${NC}   
 ${WHITE}[03] • 3X-UI                    [07] • ZI-VPN UNINSTALL${NC}
 ${WHITE}[04] • speed-update ${NC}                
 EOF
