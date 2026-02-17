@@ -5,70 +5,87 @@ AUTHOR="HCM"
 
 #!/bin/bash
 
-# --- Color Palette ---
-R='\033[0;31m'       # Red
-G='\033[0;32m'       # Green
-Y='\033[0;33m'       # Yellow
-B='\033[0;34m'       # Blue
-P='\033[0;35m'       # Purple
-C='\033[0;36m'       # Cyan
-W='\033[0;37m'       # White
-NC='\033[0m'         # No Color
+#!/bin/bash
+
+#!/bin/bash
 
 # --- Settings ---
-SECRET_PASS="HCM2580"   # ဒီမှာ Password ပြောင်းပါ
+SECRET_PASS="1234" # ဒီမှာ Password ပြောင်းပါ
 
-# --- Functions ---
-loading_bar() {
-    echo -ne "${G}Loading: [${NC}"
+# --- Color Palette ---
+R='\033[0;31m'
+G='\033[0;32m'
+Y='\033[0;33m'
+B='\033[0;34m'
+P='\033[0;35m'
+C='\033[0;36m'
+W='\033[0;37m'
+NC='\033[0m'
+
+# --- Loading Animation ---
+load_anim() {
+    echo -ne "\n${G}Accessing Core System [${NC}"
     for i in {1..20}; do
         echo -ne "${G}#${NC}"
-        sleep 0.05
+        sleep 0.04
     done
-    echo -e "${G}] 100% Done!${NC}"
+    echo -e "${G}] 100%${NC}"
     sleep 0.5
 }
 
-header() {
+# --- Login & Welcome Logo Section ---
+login_system() {
     clear
     echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo -e "${P}   _  _  _  _  _  ___ "
-    echo -e "  |   __       _    _  _   _||_     _|"
-    echo -e "  |      --     ||   |  | |    | |   "
-    echo -e "  |__|||__|     |_|    |_|   "
-    echo -e "          ${Y}PREMIUM CONTROL PANEL v2.0${NC}          "
+    echo -e "${P}   _    _   _       ${W} _                _       "
+    echo -e "${P}  | |  | | / ||  \/  |  ${W}/ |              (_)      "
+    echo -e "${P}  |   |     | \  / | ${W}| (_   _ _  _   _ _   "
+    echo -e "${P}  |    || |     | |\/| |  ${W}\_ \ / | '| '_ \| | '_ \ "
+    echo -e "${P}  | |  | || |__ | |  | |  ${W}) | (| |  | |_) | | |_) |"
+    echo -e "${P}  |_|  |_| \_||_|  |_| ${W}|_/ \_|_|  | ./|_| .__/ "
+    echo -e "                                          ${W}| |     | |    "
+    echo -e "      ${Y}👑 HCM PREMIUM SCRIPT v3.0 👑${W}       |_|     |_|    ${NC}"
     echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-}
 
-# --- Login System ---
-login() {
-    header
-    attempt=0
-    while [ $attempt -lt 3 ]; do
-        echo -e "\n${W}🔑 SYSTEM LOCKED - AUTHORIZATION REQUIRED${NC}"
-        echo -ne "${Y}Enter Root Password: ${NC}"
+    attempts=0
+    while [ $attempts -lt 3 ]; do
+        echo -ne "\n${W}🔑 ENTER ACCESS KEY: ${NC}"
         read -s mypass
         echo ""
-        
+
         if [[ "$mypass" == "$SECRET_PASS" ]]; then
             echo -e "\n${G}[✔] ACCESS GRANTED!${NC}"
-            loading_bar
-            main_menu
-            break
+            load_anim
+            
+            # Welcome Message Section
+            clear
+            echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+            echo -e "    ${G}✨ WELCOME TO HCM SCRIPT ✨${NC}"
+            echo -e "    ${Y}Your Premium Tool is Ready to Use${NC}"
+            echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+            sleep 1.5
+            return 0
         else
-            attempt=$((attempt+1))
-            echo -e "${R}[✘] WRONG PASSWORD! ATTEMPT ($attempt/3)${NC}"
-            sleep 1
+            attempts=$((attempts+1))
+            echo -e "${R}[✘] WRONG PASSWORD! ($attempts/3)${NC}"
+            sleep 0.5
         fi
     done
-    
-    if [ $attempt -eq 3 ]; then
-        echo -e "\n${R}🚨 ACCESS DENIED. TERMINATING SESSION...${NC}"
+
+    if [ $attempts -eq 3 ]; then
+        echo -e "\n${R}🚨 ACCESS DENIED! SHUTTING DOWN SYSTEM...${NC}"
         exit 1
     fi
 }
 
-# --- Main Menu UI ---
+# Login ကို အရင်စစ်မယ်
+login_system
+
+# --- သင့်ရဲ့ ကျန်တဲ့ Code တွေနဲ့ Menu တွေကို ဒီအောက်မှာ ထည့်ပါ ---
+echo -e "\n${B}[+] Starting Main Menu...${NC}"
+
+# ဥပမာ - 
+# show_main_menu
 
         case $opt in
             1 | 01)
