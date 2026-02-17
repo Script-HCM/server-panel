@@ -210,9 +210,6 @@ draw_simple_box() {
    
     
     draw_simple_box "${GREEN}GitHub Update Process Finished!${NC}"
-
-    system_update() {
-    draw_simple_box "${YELLOW}Fetching update script from GitHub....${NC}" $YELLOW
     system_update() {
     echo -e "${YELLOW}Fetching and Running update script directly...${NC}"
     
