@@ -340,10 +340,10 @@ EOF
     # Main menu
     local mainmenu=$(cat <<EOF
 
-${WHITE}[01] • Firewall install        [05] • DARK SSH MANAGER${NC}
-${WHITE}[02] • 3X-UI                   [07] • System Update${NC}
-${WHITE}[03] • ZI-VPN INSTALL          [06] • ZI-VPN UNINSTALL${NC}
-${WHITE}[04] • speed-update${NC}                 
+${WHITE}[01] • System Update            [05] • DARK SSH MANAGER${NC} 
+${WHITE}[02] •Firewall install          [06] • ZI-VPN INSTALL${NC}   
+${WHITE}[03] • 3X-UI                    [07] • ZI-VPN UNINSTALL${NC}
+${WHITE}[04] • speed-update ${NC}                
 EOF
 )
     draw_box "MENU" $GREEN "$mainmenu"
@@ -379,13 +379,14 @@ EOF
 
 handle_main_menu() {
     case $1 in
-        1) Firewall_install ;;
-        2) 3x-ui ;;
-        3) install_zivpn ;;
+        1) system_update ;;
+        2) Firewall_install ;;
+        3) 3x-ui ;;
         4) speed-update ;;
         5) install_darkssh ;;
-        6) uninstall_zivpn ;;
-        7) system_update ;;
+        6) install_zivpn ;
+        7) uninstall_zivpn ;;
+        
         *) 
             draw_simple_box "${RED}Invalid Option in Main Menu!${NC}" $RED
             return 1 
