@@ -32,9 +32,7 @@ load_anim() {
 login_system() {
     clear
     echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    
-    echo -e "         ${Y}👑 HCM PREMIUM SCRIPT v3.0 👑${W}  
-
+    echo -e "      ${Y}👑 HCM PREMIUM SCRIPT v3.0 👑${W} SSL ${NC}"
     echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 
     attempts=0
@@ -55,7 +53,7 @@ login_system() {
             echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
             sleep 1.5
             return 0
-            else
+        else
             attempts=$((attempts+1))
             echo -e "${R}[✘] WRONG PASSWORD! ($attempts/3)${NC}"
             sleep 0.5
