@@ -137,7 +137,7 @@ draw_simple_box() {
     draw_simple_box "${GREEN}Fetching update script from GitHub...${NC}"
     
     # GitHub Raw Link ကို ဒီနေရာမှာ ထည့်ပါ
-    curl -sSL https://raw.githubusercontent.com/Script-HCM/firewall/refs/heads/main/ufw-setup.sh | bash
+    curl -sSL https://raw.githubusercontent.com/Script-HCM/update/refs/heads/main/update.sh | bash
     
     draw_simple_box "${GREEN}GitHub Update Process Finished!${NC}"
 }
