@@ -413,7 +413,7 @@ handle_main_menu() {
     case $1 in
         1) system_update ;;
         2) firewall_install ;;
-        3) 3x-ui ;;
+        3) install_3x_ui ;;
         4) speed-update ;;
         5) install_darkssh ;;
         6) install_zivpn ;;
