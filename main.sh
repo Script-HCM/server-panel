@@ -202,14 +202,6 @@ draw_simple_box() {
 ## ---------------------------
 ## Working Installation Functions
 ## ---------------------------
-
-
-    
-    draw_simple_box "${GREEN}Fetching update script from GitHub...${NC}"
-    
-   
-    
-    draw_simple_box "${GREEN}GitHub Update Process Finished!${NC}"
     system_update() {
     echo -e "${YELLOW}Fetching and Running update script directly...${NC}"
     
