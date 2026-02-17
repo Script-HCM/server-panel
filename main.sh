@@ -341,11 +341,9 @@ EOF
     local mainmenu=$(cat <<EOF
 
 ${WHITE}[01] • Firewall install        [05] • DARK SSH MANAGER${NC}
-${WHITE}[02] • 3X-UI                   [08] • Alireza0 3X-UI${NC}
+${WHITE}[02] • 3X-UI                   [07] • System Update${NC}
 ${WHITE}[03] • ZI-VPN INSTALL          [06] • ZI-VPN UNINSTALL${NC}
-${WHITE}[04] • speed-update            [07] • System Update${NC}
-${WHITE}[05] • UDP MANAGER             [11] • SELECTOR TOOL${NC}
-${WHITE}[06] • RDP INSTALLER${NC}
+${WHITE}[04] • speed-update${NC}                 
 EOF
 )
     draw_box "MENU" $GREEN "$mainmenu"
