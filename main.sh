@@ -2,7 +2,80 @@
 clear
  # Script ရဲ့ ထိပ်ဆုံးမှာ ဒါလေးအရင်ထည့်ထားပါ (နာမည်ပြောင်းရန်)
 AUTHOR="HCM" 
+#!/bin/bash
 
+# --- Settings ---
+SECRET_PASS="hcm2580" # ဒီမှာ Password ပြောင်းပါ
+
+# --- Color Palette ---
+R='\033[0;31m'
+G='\033[0;32m'
+Y='\033[0;33m'
+B='\033[0;34m'
+P='\033[0;35m'
+C='\033[0;36m'
+W='\033[0;37m'
+NC='\033[0m'
+
+# --- Loading Animation ---
+load_anim() {
+    echo -ne "\n${G}Accessing Core System [${NC}"
+    for i in {1..20}; do
+        echo -ne "${G}#${NC}"
+        sleep 0.04
+    done
+    echo -e "${G}] 100%${NC}"
+    sleep 0.5
+}
+
+# --- Login & Welcome Logo Section ---
+login_system() {
+    clear
+    echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    
+    echo -e "         ${Y}👑 HCM PREMIUM SCRIPT v3.0 👑${W}  
+
+    echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+
+    attempts=0
+    while [ $attempts -lt 3 ]; do
+        echo -ne "\n${W}🔑 ENTER ACCESS KEY: ${NC}"
+        read -s mypass
+        echo ""
+
+        if [[ "$mypass" == "$SECRET_PASS" ]]; then
+            echo -e "\n${G}[✔] ACCESS GRANTED!${NC}"
+            load_anim
+            
+            # Welcome Message Section
+            clear
+            echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+            echo -e "    ${G}✨ WELCOME TO HCM SCRIPT ✨${NC}"
+            echo -e "    ${Y}Your Premium Tool is Ready to Use${NC}"
+            echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+            sleep 1.5
+            return 0
+        else
+            attempts=$((attempts+1))
+            echo -e "${R}[✘] WRONG PASSWORD! ($attempts/3)${NC}"
+            sleep 0.5
+        fi
+    done
+
+    if [ $attempts -eq 3 ]; then
+        echo -e "\n${R}🚨 ACCESS DENIED! SHUTTING DOWN SYSTEM...${NC}"
+        exit 1
+    fi
+}
+
+# Login ကို အရင်စစ်မယ်
+login_system
+
+# --- သင့်ရဲ့ ကျန်တဲ့ Code တွေနဲ့ Menu တွေကို ဒီအောက်မှာ ထည့်ပါ ---
+echo -e "\n${B}[+] Starting Main Menu...${NC}"
+
+# ဥပမာ - 
+# show_main_menu
 ## ---------------------------
 ## Global Variables
 ## ---------------------------
