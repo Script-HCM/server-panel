@@ -474,7 +474,7 @@ handle_tools_menu() {
         12) show_vpn_port_info ;;
         13) clean_vps_logs ;;
         88) reboot_vps ;;
-        *) 
+         *) 
             draw_simple_box "${RED}Invalid Option in Tools Menu!${NC}" $RED
             return 1 
             ;;
@@ -486,13 +486,13 @@ install_option() {
     local choice="$1"
     case $choice in
         00|0)
-            draw_simple_box "${GREEN}Thank you for using CHANNEL 404 TUNNEL!${NC}" $GREEN
+            draw_simple_box "${GREEN}Thank you for using HCM  TUNNEL!${NC}" $GREEN
             exit 0
             ;;
-        1|2|3|4|5|6|7|8|9|10|11)
+        1|2|3|4|5|6|7)
             handle_main_menu "$choice"
             ;;
-        12|13|14|15|16|17|18|88)
+        8|9|10|11|12|13|88)
             handle_tools_menu "$choice"
             ;;
         *)
