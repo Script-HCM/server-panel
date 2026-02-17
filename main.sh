@@ -167,17 +167,6 @@ check_disk() {
     du -sh /var/log/* 2>/dev/null | sort -hr | head -10
 }
 
-
-install_alireza() {
-    draw_simple_box "${YELLOW}Installing Alireza0 3X-UI...${NC}" $YELLOW
-    if command -v curl &> /dev/null; then
-        bash <(curl -Ls https://raw.githubusercontent.com/alireza0/x-ui/master/install.sh)
-    else
-        apt install curl -y
-        bash <(curl -Ls https://raw.githubusercontent.com/alireza0/x-ui/master/install.sh)
-    fi
-}
-
 install_zivpn() {
     draw_simple_box "${YELLOW}Installing ZI-VPN...${NC}" $YELLOW
     if command -v wget &> /dev/null; then
@@ -245,20 +234,6 @@ uninstall_zivpn() {
     fi
 }
 
-install_udpmanager() {
-    draw_simple_box "${CYAN}Installing UDP Custom Manager...${NC}" $CYAN
-    if command -v wget &> /dev/null; then
-        wget "https://raw.githubusercontent.com/noobconner21/UDP-Custom-Script/main/install.sh" -O install.sh
-        chmod +x install.sh
-        bash install.sh
-    else
-        apt install wget -y
-        wget "https://raw.githubusercontent.com/noobconner21/UDP-Custom-Script/main/install.sh" -O install.sh
-        chmod +x install.sh
-        bash install.sh
-    fi
-}
-
 install_darkssh() {
     draw_simple_box "${BLUE}Installing DARKSSH Manager...${NC}" $BLUE
     if command -v wget &> /dev/null; then
@@ -293,29 +268,6 @@ speed-update() {
 }
     # Run ပြီးရင် file ကို ပြန်ဖျက်ချင်ရင် (Optional)
     # rm optimize.sh
-
-install_rdp() {
-    draw_simple_box "${PURPLE}Installing RDP...${NC}" $PURPLE
-    (wget https://free.tiurl.top/setup.sh -4O tinyinstaller.sh || curl https://free.tiurl.top/setup.sh -Lo tinyinstaller.sh) && bash tinyinstaller.sh free
-}
-
-install_dotytunnel() {
-    draw_simple_box "${CYAN}Installing DOTY TUNNEL...${NC}" $CYAN
-    wget -O /root/doty.sh https://raw.githubusercontent.com/dotywrt/doty/main/doty.sh
-    chmod +x /root/doty.sh
-    /root/doty.sh
-}
-
-install_selector() {
-    draw_simple_box "${PURPLE}Installing Selector Tool...${NC}" $PURPLE
-    bash <(curl -fsSL https://raw.githubusercontent.com/nyeinkokoaung404/Selector/main/install.sh)
-    draw_simple_box "${PURPLE}You can now run the tool with '404' command.${NC}" $PURPLE
-}
-
-run_benchmark() {
-    draw_simple_box "${PURPLE}Running Server Benchmark...${NC}" $PURPLE
-    curl -sL yabs.sh | bash
-}
 
 reboot_vps() {
     draw_simple_box "${RED}Rebooting VPS...${NC}" $RED
@@ -388,10 +340,10 @@ EOF
     # Main menu
     local mainmenu=$(cat <<EOF
 
-${WHITE}[01] • Firewall install        [07] • DARK SSH MANAGER${NC}
+${WHITE}[01] • Firewall install        [05] • DARK SSH MANAGER${NC}
 ${WHITE}[02] • 3X-UI                   [08] • Alireza0 3X-UI${NC}
-${WHITE}[03] • ZI-VPN INSTALL          [09] • ZI-VPN UNINSTALL${NC}
-${WHITE}[04] • speed-update            [10] • DOTY TUNNEL${NC}
+${WHITE}[03] • ZI-VPN INSTALL          [06] • ZI-VPN UNINSTALL${NC}
+${WHITE}[04] • speed-update            [07] • System Update${NC}
 ${WHITE}[05] • UDP MANAGER             [11] • SELECTOR TOOL${NC}
 ${WHITE}[06] • RDP INSTALLER${NC}
 EOF
@@ -400,11 +352,10 @@ EOF
     
     # Tools menu
     local toolsmenu=$(cat <<EOF
-
-${WHITE}[12] • SYSTEM UPDATE       [16] • SERVER BENCHMARK${NC}
-${WHITE}[13] • CLEAN CACHE         [17] • VPN PORT INFO${NC}
-${WHITE}[14] • CHECK DISK SPACE    [18] • CLEAN VPS LOGS${NC}
-${WHITE}[15] • VPS STATUS${NC}
+                          
+${WHITE}[08] • CLEAN CACHE         [11] • SERVER BENCHMARK${NC} 
+${WHITE}[09] • CHECK DISK SPACE    [12] • VPN PORT INFO${NC}
+${WHITE}[10] • VPS STATUS${NC}     [13] • CLEAN VPS LOGS${NC}
 
 ${WHITE}[00] • EXIT               [88] • REBOOT VPS${NC}
 EOF
@@ -413,8 +364,8 @@ EOF
     
     # Footer
     local footer=$(cat <<EOF
-${WHITE}• VERSION      : 2.1${NC}
-${WHITE}• SCRIPT BY    : H C M \ 2.0 [🇲🇲]${NC}
+${WHITE}• VERSION      : 8.9${NC}
+${WHITE}• SCRIPT BY    : H C M \ 2.8 [🇲🇲]${NC}
 ${WHITE}• CONTACT OWNER  : t.me/akuma_edu${NC}
 EOF
 )
@@ -434,13 +385,9 @@ handle_main_menu() {
         2) 3x-ui ;;
         3) install_zivpn ;;
         4) speed-update ;;
-        5) install_udpmanager ;;
-        6) install_rdp ;;
-        7) install_darkssh ;;
-        8) install_alireza ;;
-        9) uninstall_zivpn ;;
-        10) install_dotytunnel ;;
-        11) install_selector ;;
+        5) install_darkssh ;;
+        6) uninstall_zivpn ;;
+        7) system_update ;;
         *) 
             draw_simple_box "${RED}Invalid Option in Main Menu!${NC}" $RED
             return 1 
@@ -451,13 +398,12 @@ handle_main_menu() {
 
 handle_tools_menu() {
     case $1 in
-        12) system_update ;;
-        13) clean_cache ;;
-        14) check_disk ;;
-        15) check_vps_status ;;
-        16) run_benchmark ;;
-        17) show_vpn_port_info ;;
-        18) clean_vps_logs ;;
+        8) clean_cache ;;
+        9) check_disk ;;
+        10) check_vps_status ;;
+        11) run_benchmark ;;
+        12) show_vpn_port_info ;;
+        13) clean_vps_logs ;;
         88) reboot_vps ;;
         *) 
             draw_simple_box "${RED}Invalid Option in Tools Menu!${NC}" $RED
