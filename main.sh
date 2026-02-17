@@ -297,8 +297,6 @@ speed-update() {
 }
     # Run ပြီးရင် file ကို ပြန်ဖျက်ချင်ရင် (Optional)
     # rm optimize.sh
-}
-}
 
 install_rdp() {
     draw_simple_box "${PURPLE}Installing RDP...${NC}" $PURPLE
