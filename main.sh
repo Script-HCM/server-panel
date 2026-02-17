@@ -253,15 +253,16 @@ install_zivpn() {
     fi
 }
 
-uninstall_zivpn() {
-    echo -e "\n${R}Uninstalling ZIVPN...${NC}"
-    # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
-    curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/uninstall.sh" | bash
-
 install_3x_ui() {
     echo -e "\n${B}Installing 3x-ui Network Optimizer...${NC}"
     # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
     curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh" | bash
+}
+
+uninstall_zivpn() {
+    echo -e "\n${R}Uninstalling ZIVPN...${NC}"
+    # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
+    curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/uninstall.sh" | bash
 }
 
     Firewall ကဲ့သို့ git clone လုပ်ရမည့်ဟာမျိုးကို ယာယီ folder ဖြင့် run ခြင်း
