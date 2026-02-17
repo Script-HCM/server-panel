@@ -55,7 +55,7 @@ login_system() {
             echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
             sleep 1.5
             return 0
-        else
+            else
             attempts=$((attempts+1))
             echo -e "${R}[✘] WRONG PASSWORD! ($attempts/3)${NC}"
             sleep 0.5
