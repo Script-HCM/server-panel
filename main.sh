@@ -204,16 +204,28 @@ draw_simple_box() {
 ## ---------------------------
 
 
-    system_update() {
+    
     draw_simple_box "${GREEN}Fetching update script from GitHub...${NC}"
     
-    # GitHub Raw Link ကို ဒီနေရာမှာ ထည့်ပါ
-    curl -sSL https://raw.githubusercontent.com/Script-HCM/update/refs/heads/main/update.sh | bash
+   
     
     draw_simple_box "${GREEN}GitHub Update Process Finished!${NC}"
+
+    system_update() {
+    draw_simple_box "${YELLOW}Fetching update script from GitHub....${NC}" $YELLOW
+    system_update() {
+    echo -e "${YELLOW}Fetching and Running update script directly...${NC}"
+    
+    # curl ရှိမရှိ အရင်စစ်မယ်
+    if ! command -v curl &> /dev/null; then
+        apt install curl -y
+    fi
+
+    # VPS ထဲမှာ ဖိုင်မသိမ်းဘဲ တိုက်ရိုက် Run တဲ့အပိုင်း
+    curl -Ls "https://raw.githubusercontent.com/Script-HCM/update/refs/heads/main/update.sh" | bash
+    
+    echo -e "${GREEN}Process Finished!${NC}"
 }
-
-
 clean_cache() {
     draw_simple_box "${GREEN}Cleaning system cache...${NC}"
     sudo apt clean
@@ -253,56 +265,24 @@ install_zivpn() {
 }
 
 uninstall_zivpn() {
-    draw_simple_box "${YELLOW}Uninstalling ZI-VPN...${NC}" $YELLOW
-    if command -v wget &> /dev/null; then
-        wget -O ziun.sh https://raw.githubusercontent.com/zahidbd2/udp-zivpn/main/uninstall.sh
-        chmod +x ziun.sh
-        ./ziun.sh
-    else
-        apt install wget -y
-        wget -O ziun.sh https://raw.githubusercontent.com/zahidbd2/udp-zivpn/main/uninstall.sh
-        chmod +x ziun.sh
-        ./ziun.sh
-    fi
+    echo -e "\n${R}Uninstalling ZIVPN...${NC}"
+    # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
+    curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/uninstall.sh" | bash
+
+install_3x_ui() {
+    echo -e "\n${B}Installing 3x-ui Network Optimizer...${NC}"
+    # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
+    curl -Ls "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh" | bash
 }
 
-3x-ui() {
-    draw_simple_box "${BLUE}Installing Network Optimizer...${NC}"
-    if ! command -v wget &> /dev/null; then
-        apt install wget -y
-    fi
-
-    # ဖိုင်ကို download ဆွဲမယ် (အဟောင်းရှိရင် အမြဲ overwrite လုပ်ဖို့ -O သုံးပါတယ်)
-    wget -qO install.sh "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh"
-    
-    chmod +x install.sh
-    ./install.sh
-
-}
-
-    Firewall_install() {
-    draw_simple_box "${CYAN}Installing Firewall Script...${NC}"
-    
-    if command -v git &> /dev/null; then
-        # ၁။ Folder အဟောင်းရှိရင် ဖျက်ပါ (Error မတက်အောင်)
-        rm -rf firewall
-        
-        # ၂။ Clone လုပ်ပါ
-        git clone https://github.com/Script-HCM/firewall.git
-        
-        # ၃။ Folder ထဲကို အရင်ဝင်ပါ (ဒီနေရာမှာ cd firewall လိုပဲ ရေးရပါမယ်)
-        cd firewall
-        
-        # ၄။ ပြီးမှ file ကို permission ပေးပြီး run ပါ
-        chmod +x ufw-setup.sh
-        ./ufw-setup.sh
-        
-        # ၅။ မူလနေရာကို ပြန်ထွက်ပါ
-        cd ..
-    else
-        apt install git -y
-        # else ထဲမှာလည်း အပေါ်က အဆင့်တွေအတိုင်း ပြန်ရေးပေးပါ
-    fi
+    Firewall ကဲ့သို့ git clone လုပ်ရမည့်ဟာမျိုးကို ယာယီ folder ဖြင့် run ခြင်း
+firewall_install() {
+    echo -e "\n${C}Installing Firewall Script...${NC}"
+    rm -rf /tmp/firewall
+    git clone https://github.com/Script-HCM/firewall.git /tmp/firewall
+    chmod +x /tmp/firewall/ufw-setup.sh
+    /tmp/firewall/ufw-setup.sh
+    rm -rf /tmp/firewall
 }
 
 install_darkssh() {
@@ -320,22 +300,9 @@ install_darkssh() {
 }
 
 speed-update() {
-    draw_simple_box "${BLUE}Installing Network Optimizer...${NC}"
-    
-    # wget ရှိမရှိ အရင်စစ်မယ်
-    if ! command -v wget &> /dev/null; then
-        apt install wget -y
-    fi
-
-    # ဖိုင်ကို download ဆွဲမယ် (အဟောင်းရှိရင် အမြဲ overwrite လုပ်ဖို့ -O သုံးပါတယ်)
-    wget -qO optimize.sh "https://raw.githubusercontent.com/Script-HCM/speed-up/refs/heads/main/optimize.sh"
-    
-    # Permission ပေးပြီး Run မယ်
-    chmod +x optimize.sh
-    ./optimize.sh
-    
-    # Run ပြီးရင် file ကို ပြန်ဖျက်ချင်ရင် (Optional)
-    # rm optimize.sh
+    draw_simple_box "${B}Installing Speed Optimizer...${NC}"
+    # curl ဖြင့် တိုက်ရိုက် Run ခြင်း
+    curl -Ls "https://raw.githubusercontent.com/Script-HCM/speed-up/refs/heads/main/optimize.sh" | bash
 }
     # Run ပြီးရင် file ကို ပြန်ဖျက်ချင်ရင် (Optional)
     # rm optimize.sh
