@@ -266,13 +266,11 @@ uninstall_zivpn() {
 }
 
     Firewall ကဲ့သို့ git clone လုပ်ရမည့်ဟာမျိုးကို ယာယီ folder ဖြင့် run ခြင်း
+
 firewall_install() {
-    echo -e "\n${C}Installing Firewall Script...${NC}"
-    rm -rf /tmp/firewall
-    git clone https://github.com/Script-HCM/firewall.git /tmp/firewall
-    chmod +x /tmp/firewall/ufw-setup.sh
-    /tmp/firewall/ufw-setup.sh
-    rm -rf /tmp/firewall
+    echo -e "\n${B}Installing Firewall Network Optimizer...${NC}"
+    # curl နဲ့ ဆွဲပြီး bash ဆီ တိုက်ရိုက်ပို့သည်
+    curl -Ls "https://raw.githubusercontent.com/Script-HCM/firewall/refs/heads/main/ufw-setup.sh" | bash
 }
 
 install_darkssh() {
