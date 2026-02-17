@@ -3,6 +3,123 @@ clear
  # Script ရဲ့ ထိပ်ဆုံးမှာ ဒါလေးအရင်ထည့်ထားပါ (နာမည်ပြောင်းရန်)
 AUTHOR="HCM" 
 
+#!/bin/bash
+
+# --- Color Palette ---
+R='\033[0;31m'       # Red
+G='\033[0;32m'       # Green
+Y='\033[0;33m'       # Yellow
+B='\033[0;34m'       # Blue
+P='\033[0;35m'       # Purple
+C='\033[0;36m'       # Cyan
+W='\033[0;37m'       # White
+NC='\033[0m'         # No Color
+
+# --- Settings ---
+SECRET_PASS="HCM2580"   # ဒီမှာ Password ပြောင်းပါ
+
+# --- Functions ---
+loading_bar() {
+    echo -ne "${G}Loading: [${NC}"
+    for i in {1..20}; do
+        echo -ne "${G}#${NC}"
+        sleep 0.05
+    done
+    echo -e "${G}] 100% Done!${NC}"
+    sleep 0.5
+}
+
+header() {
+    clear
+    echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo -e "${P}   _  _  _  _  _  ___ "
+    echo -e "  |   __       _    _  _   _||_     _|"
+    echo -e "  |      --     ||   |  | |    | |   "
+    echo -e "  |__|||__|     |_|    |_|   "
+    echo -e "          ${Y}PREMIUM CONTROL PANEL v2.0${NC}          "
+    echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+}
+
+# --- Login System ---
+login() {
+    header
+    attempt=0
+    while [ $attempt -lt 3 ]; do
+        echo -e "\n${W}🔑 SYSTEM LOCKED - AUTHORIZATION REQUIRED${NC}"
+        echo -ne "${Y}Enter Root Password: ${NC}"
+        read -s mypass
+        echo ""
+        
+        if [[ "$mypass" == "$SECRET_PASS" ]]; then
+            echo -e "\n${G}[✔] ACCESS GRANTED!${NC}"
+            loading_bar
+            main_menu
+            break
+        else
+            attempt=$((attempt+1))
+            echo -e "${R}[✘] WRONG PASSWORD! ATTEMPT ($attempt/3)${NC}"
+            sleep 1
+        fi
+    done
+    
+    if [ $attempt -eq 3 ]; then
+        echo -e "\n${R}🚨 ACCESS DENIED. TERMINATING SESSION...${NC}"
+        exit 1
+    fi
+}
+
+# --- Main Menu UI ---
+main_menu() {
+    while true; do
+        header
+        echo -e "${W}  [01] ${G}▶${NC} Install 3x-ui (Optimized)"
+        echo -e "${W}  [02] ${G}▶${NC} Install Firewall Guard"
+        echo -e "${W}  [03] ${G}▶${NC} Clear System Logs/Cache"
+        echo -e "${W}  [04] ${G}▶${NC} Uninstall ZIVPN Script"
+        echo -e "${C}─────────────────────────────────────────────────────${NC}"
+        echo -e "${W}  [00] ${R}✖${NC} Exit Program"
+        echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+        echo -ne "${Y}Select an Option: ${NC}"
+        read opt
+
+        case $opt in
+            1 | 01)
+                echo -e "\n${G}Installing Network Optimizer...${NC}"
+                wget -qO optimize.sh "https://raw.githubusercontent.com/Script-HCM/x-ui/refs/heads/main/install.sh"
+                chmod +x optimize.sh && ./optimize.sh
+                ;;
+            2 | 02)
+                echo -e "\n${G}Activating Firewall...${NC}"
+                # Firewall Code Here
+                sleep 2
+                ;;
+            3 | 03)
+                echo -e "\n${Y}Cleaning System...${NC}"
+                apt clean && apt autoremove -y
+                echo -e "${G}Clean Up Finished!${NC}"
+                sleep 1
+                ;;
+            4 | 04)
+                echo -e "\n${R}Uninstalling ZIVPN...${NC}"
+                # Uninstall Code Here
+                sleep 2
+                ;;
+            0 | 00)
+                echo -e "\n${P}Thank you for using! Goodbye.${NC}"
+                exit 0
+                ;;
+            *)
+                echo -e "\n${R}Invalid Option! Please try again.${NC}"
+                sleep 1
+                ;;
+        esac
+        echo -e "\n${C}Press [Enter] to back to menu...${NC}"
+        read
+    done
+}
+
+# Start Script
+login
 ## ---------------------------
 ## Global Variables
 ## ---------------------------
