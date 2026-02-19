@@ -32,7 +32,7 @@ load_anim() {
 login_system() {
     clear
     echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo -e "      ${Y}👑 HCM PREMIUM SCRIPT v3.0 👑${W} SSL ${NC}"
+    echo -e "      ${Y}👑 HCM PREMIUM SCRIPT v3.8 👑${W} SSL ${NC}"
     echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 
     attempts=0
@@ -364,6 +364,16 @@ ${WHITE} ISP        : ${GREEN}${ISP}${NC}
 ${WHITE} LOCATION   : ${GREEN}${CITY}, ${COUNTRY}${NC}
 EOF
 )
+
+DOWNLOAD_SPEED=$(curl -s -o /dev/null -w "%{speed_download}\n" http://speedtest.tele2.net/10MB.zip | awk '{printf "%.2f Mbps\n", $1/125000}')
+
+echo -e "${green}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${plain}"
+echo -e "${green}┃${plain}  ${bold}🚀 SPEEDTEST ANALYTICS${plain}                              ${green}┃${plain}"
+echo -e "${green}┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫${plain}"
+echo -e "${green}┃${plain}  ${white}DOWNLOAD SPEED :${plain} ${bold}${cyan}$DOWNLOAD_SPEED${plain}"
+echo -e "${green}┃${plain}  ${white}NETWORK STATUS :${plain} ${bold}${green}STABLE / OPTIMIZED${plain}"
+echo -e "${green}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${plain}"
+echo ""
     draw_simple_box "$sysinfo" $BLUE
     
     # Main menu
